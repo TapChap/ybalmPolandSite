@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>סיכום יומי</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
@@ -13,13 +13,13 @@
         <h1>סיכום יומי</h1>
     </header>
     <nav>
-        <a href="/">ראשי</a>
+        <a href="/index.html">ראשי</a>
         <a href="gallery.html">גלריית התמונות</a>
         <a href="letterToPoland.html">כתיבת מכתב לבני</a>
     </nav>
 
-    <img src="resources/ybalm.png" alt="Corner Image 1" class="corner-images top-left">
-    <img src="resources/BAnetwork.png" alt="Corner Image 2" class="corner-images top-right">
+    <img src="/resources/ybalm.png" alt="Corner Image 1" class="corner-images top-left">
+    <img src="/resources/BAnetwork.png" alt="Corner Image 2" class="corner-images top-right">
 
     <div class="container" id="summeries"></div>
 
@@ -27,7 +27,17 @@
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
-        import { firebaseConfig } from "/config.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBtFxfJfWYzTkjCMrhySoPofAS5zAbmqKM",
+            authDomain: "ybalmpolandsite.firebaseapp.com",
+            projectId: "ybalmpolandsite",
+            storageBucket: "ybalmpolandsite.appspot.com",
+            messagingSenderId: "581656278199",
+            appId: "1:581656278199:web:d43566dcc3a87093c50932",
+            measurementId: "G-Z8HQTJMV7V"
+        };
+
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
