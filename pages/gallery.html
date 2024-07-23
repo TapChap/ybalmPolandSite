@@ -13,30 +13,27 @@
 <header>
     <h1>Image Gallery</h1>
 
-    <img src="/ybalmPolandSite/resources/ybalm.png" alt="Corner Image 1" class="corner-images top-left">
-    <img src="/ybalmPolandSite/resources/BAnetwork.png" alt="Corner Image 2" class="corner-images top-right">
+    <img src="resources/ybalm.png" alt="Corner Image 1" class="corner-images top-left">
+    <img src="resources/BAnetwork.png" alt="Corner Image 2" class="corner-images top-right">
 </header>
 
 <nav>
-    <a href="/ybalmPolandSite/index.html">ראשי</a>
-    <a href="/ybalmPolandSite/pages/gallery.html">גלריית התמונות</a>
-    <a href="/ybalmPolandSite/pages/dailySummary.html">סיכום יומי</a>
-    <a href="/ybalmPolandSite/pages/letterToPoland.html">מכתב לפולין</a>
+    <a href="index.html">ראשי</a>
+    <a href="pages/gallery.html">גלריית התמונות</a>
+    <a href="pages/dailySummary.html">סיכום יומי</a>
+    <a href="pages/letterToPoland.html">מכתב לפולין</a>
 </nav>
 
+<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/zoomies.js"></script>
+
 <div class="gallery" id="gallery">
-    <iframe id="loading" src="https://giphy.com/embed/sSgvbe1m3n93G" width="80" height="80" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <l-zoomies size="150" speed="1.6" bg-opacity="0.15" stroke="5" color="black" id="loading" style="margin-top: 120px"></l-zoomies>
+<!--    <iframe id="loading" src="https://giphy.com/embed/sSgvbe1m3n93G" width="80" height="80" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>-->
 </div>
 
 <script type="module">
-    // Import the functions you need from the SDKs you need
     import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import {
-        getStorage,
-        ref,
-        listAll,
-        getDownloadURL
-    } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+    import {getStorage, ref, listAll, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyBtFxfJfWYzTkjCMrhySoPofAS5zAbmqKM",
@@ -83,8 +80,17 @@
         }
     }
 
+    function makeImagesVisible() {
+        const elements = document.querySelectorAll('gallery');
+        elements.forEach(element => {
+            element.style.visibility = 'visible';
+        });
+    }
+
     await loadImages();
-    document.getElementById("loading").remove();
+    await document.getElementById("loading").remove();
+    makeImagesVisible();
+
 
 </script>
 </body>
