@@ -10,78 +10,79 @@
 </head>
 
 <body>
-    <header>
-        <h1>Image Gallery</h1>
+<header>
+    <h1>Image Gallery</h1>
 
-        <img src="/ybalmPolandSite/resources/ybalm.png" alt="Corner Image 1" class="corner-images top-left">
-        <img src="/ybalmPolandSite/resources/BAnetwork.png" alt="Corner Image 2" class="corner-images top-right">
-    </header>
+    <img src="/ybalmPolandSite/resources/ybalm.png" alt="Corner Image 1" class="corner-images top-left">
+    <img src="/ybalmPolandSite/resources/BAnetwork.png" alt="Corner Image 2" class="corner-images top-right">
+</header>
 
-    <nav>
-        <a href="/ybalmPolandSite/index.html">ראשי</a>
-        <a href="/ybalmPolandSite/pages/gallery.html">גלריית התמונות</a>
-        <a href="/ybalmPolandSite/pages/dailySummary.html">סיכום יומי</a>
-        <a href="/ybalmPolandSite/pages/letterToPoland.html">מכתב לפולין</a>
-    </nav>
+<nav>
+    <a href="/ybalmPolandSite/index.html">ראשי</a>
+    <a href="/ybalmPolandSite/pages/gallery.html">גלריית התמונות</a>
+    <a href="/ybalmPolandSite/pages/dailySummary.html">סיכום יומי</a>
+    <a href="/ybalmPolandSite/pages/letterToPoland.html">מכתב לפולין</a>
+</nav>
 
-    <div class="gallery" id="gallery"></div>
+<div class="gallery" id="gallery"></div>
 
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import {
+        getStorage,
+        ref,
+        listAll,
+        getDownloadURL
+    } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyBtFxfJfWYzTkjCMrhySoPofAS5zAbmqKM",
-            authDomain: "ybalmpolandsite.firebaseapp.com",
-            projectId: "ybalmpolandsite",
-            storageBucket: "ybalmpolandsite.appspot.com",
-            messagingSenderId: "581656278199",
-            appId: "1:581656278199:web:d43566dcc3a87093c50932",
-            measurementId: "G-Z8HQTJMV7V"
-        };
+    const firebaseConfig = {
+        apiKey: "AIzaSyBtFxfJfWYzTkjCMrhySoPofAS5zAbmqKM",
+        authDomain: "ybalmpolandsite.firebaseapp.com",
+        projectId: "ybalmpolandsite",
+        storageBucket: "ybalmpolandsite.appspot.com",
+        messagingSenderId: "581656278199",
+        appId: "1:581656278199:web:d43566dcc3a87093c50932",
+        measurementId: "G-Z8HQTJMV7V"
+    };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const storage = getStorage(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
 
-        const gallery = document.getElementById('gallery');
+    const gallery = document.getElementById('gallery');
 
-        async function loadImages() {
-            for (let i = 10; i >= 0; i--) {
-                const storageRef = ref(storage, `day${i}`);
+    async function loadImages() {
+        for (let i = 10; i >= 0; i--) {
+            const storageRef = ref(storage, `day${i}`);
 
-                try {
-                    const result = await listAll(storageRef);
-                    if (result.items.length > 0) {
+            const result = await listAll(storageRef);
+            if (result.items.length > 0) {
 
-                        const hr = document.createElement("hr");
-                        const dayNum = document.createElement("h2");
-                        dayNum.textContent = `Day ${i}`;
-                        gallery.appendChild(hr);
-                        gallery.appendChild(dayNum);
+                const hr = document.createElement("hr");
+                const dayNum = document.createElement("h2");
+                dayNum.textContent = `Day ${i}`;
+                gallery.appendChild(hr);
+                gallery.appendChild(dayNum);
 
-                        const dayBox = document.createElement("div");
-                        dayBox.className = 'day-box';
+                const dayBox = document.createElement("div");
+                dayBox.className = 'day-box';
 
-                        for (const imageRef of result.items) {
-                            const img = document.createElement('img');
-                            const url = await getDownloadURL(imageRef);
-                            img.src = url;
-                            dayBox.appendChild(img);
-                        }
-
-                        gallery.appendChild(dayBox);
-                    }
-                } catch (error) {
-                    console.log('Error listing images:', error);
+                for (const imageRef of result.items) {
+                    const img = document.createElement('img');
+                    const url = await getDownloadURL(imageRef);
+                    img.src = url;
+                    dayBox.appendChild(img);
                 }
+
+                gallery.appendChild(dayBox);
             }
         }
+    }
 
-        loadImages();
+    loadImages();
 
-    </script>
+</script>
 </body>
 
 </html>
