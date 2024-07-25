@@ -1,5 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import {getStorage, ref, listAll, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBtFxfJfWYzTkjCMrhySoPofAS5zAbmqKM",
@@ -19,9 +19,8 @@ const summeries = document.getElementById('summeries');
 
 async function loadSummeries() {
     const folder = await listAll(ref(storage, 'dailySummary'));
-    console.log(folder.items.length);
 
-    for (let i = folder.items.length - 1; i >= 0; i --){
+    for (let i = folder.items.length - 1; i >= 0; i--) {
         try {
             const url = await getDownloadURL(folder.items[i]);
             const response = await fetch(url);
@@ -47,4 +46,16 @@ async function loadSummeries() {
     }
 }
 
-loadSummeries();
+function fadeSummeries() {
+    const summeries = document.getElementsByClassName('day-summary');
+
+    for (let i = summeries.length - 1; i >= 0; i--) {
+        let summery = summeries.item(i);
+        let delay= 3;
+        for (let j = 0; j <= 100; j++) {
+            setTimeout(() => summery.style.opacity = j + '%', (delay * j) + (delay * 120 * i));
+        }
+    }
+}
+
+loadSummeries().then(fadeSummeries);

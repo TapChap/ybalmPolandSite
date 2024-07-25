@@ -59,57 +59,6 @@ nav a:hover {
     right: 10px;
 }
 
-.gallery {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-    visibility: hidden;
-}
-
-.gallery img {
-    margin: 10px;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s;
-}
-
-.gallery img:hover {
-    transform: scale(1.15);
-}
-
-.day-box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.day-summary {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.day-summary h2 {
-    margin-top: 0;
-}
-
-.day-summary p {
-    line-height: 1.6;
-}
-
-.center {
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 footer {
     background-color: #333;
     color: white;
@@ -118,10 +67,4 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
-}
-
-.forms{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
 }
