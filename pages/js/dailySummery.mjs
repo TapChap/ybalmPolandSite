@@ -51,9 +51,11 @@ function fadeSummeries() {
 
     for (let i = summeries.length - 1; i >= 0; i--) {
         let summery = summeries.item(i);
-        let delay= 3;
         for (let j = 0; j <= 100; j++) {
-            setTimeout(() => summery.style.opacity = j + '%', (delay * j) + (delay * 120 * i));
+            setTimeout(() => {
+                summery.style.opacity = j + '%'
+                console.log(summery.style.opacity.toString());
+            }, (10 * j) + (6 * 100 * i));
         }
     }
 }
