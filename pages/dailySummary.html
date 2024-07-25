@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>סיכום יומי</title>
     <!-- toggle comment for local development-->
-<!--    <base href="https://tapchap.github.io/ybalmPolandSite/">-->
-    <base href="/">
+    <base href="https://tapchap.github.io/ybalmPolandSite/">
+<!--    <base href="/">-->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -65,7 +65,7 @@
                     const title = document.createElement("h2");
                     const paragraph = document.createElement("p");
 
-                    title.textContent = `Day ${i + 1}`;
+                    title.textContent = `${i + 1} יום`;
                     paragraph.textContent = content;
 
                     daySummery.append(title);
