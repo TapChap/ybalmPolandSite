@@ -64,7 +64,7 @@ nav a:hover {
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    /*visibility: hidden;*/
+    visibility: hidden;
 }
 
 .gallery img {
@@ -101,6 +101,13 @@ nav a:hover {
 
 .day-summary p {
     line-height: 1.6;
+}
+
+.center {
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 footer {
