@@ -1,5 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import {getStorage, ref, listAll, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBtFxfJfWYzTkjCMrhySoPofAS5zAbmqKM",
@@ -38,6 +38,9 @@ async function loadImages() {
             for (const url of urls) {
                 const img = document.createElement('img');
                 img.src = url;
+                img.onclick = ev => {
+                    if (ev.button === 0) downloadImage(url);
+                }
                 dayBox.appendChild(img);
             }
 
@@ -46,6 +49,21 @@ async function loadImages() {
     }
 }
 
-await loadImages();
-await document.getElementById("loading").remove();
-document.getElementById('gallery').style.visibility = 'visible';
+async function downloadImage(url) {
+    const image = await fetch(url)
+    const imageBlog = await image.blob()
+    const imageURL = URL.createObjectURL(imageBlog)
+
+    const link = document.createElement('a')
+    link.href = imageURL
+    link.download = 'polandPicture'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+}
+
+loadImages()
+    .then(
+        (__) => document.getElementById("loading").remove())
+    .then(
+        (__)=> document.getElementById('gallery').style.visibility = 'visible');
