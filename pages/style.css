@@ -69,16 +69,26 @@ nav a:hover {
 
 .gallery img {
     margin: 15px;
-    width: 250px;
-    height: 250px;
+    /*width: 300px;*/
+    height: 300px;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.25s;
+    transition: transform 0.2s;
+    z-index: initial;
 }
 
 .gallery img:hover {
-    transform: scale(1.15);
+    /*transform: scale(1.15);*/
+    transform: scale(1.5);
+    z-index: 100;
+}
+
+.day-box {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .day-summary {
@@ -97,10 +107,6 @@ nav a:hover {
 
 .day-summary p {
     line-height: 1.6;
-    direction: rtl;
-}
-
-#instructions {
     direction: rtl;
 }
 

@@ -17,7 +17,7 @@ const storage = getStorage(app);
 
 const gallery = document.getElementById('gallery');
 
-async function loadImages() {
+async function loadImagesFromFirebase() {
     for (let i = 10; i >= 0; i--) {
         const storageRef = ref(storage, `day${i}`);
         const listResult = await listAll(storageRef);
@@ -62,7 +62,7 @@ async function downloadImage(url) {
     document.body.removeChild(link)
 }
 
-loadImages()
+loadImagesFromFirebase()
     .then(
         (__) => document.getElementById("loading").remove())
     .then(
