@@ -32,7 +32,7 @@ async function loadSummeries() {
             const title = document.createElement("h2");
             const paragraph = document.createElement("p");
 
-            title.textContent = `${i + 1} יום`;
+            title.textContent = `יום ${i + 1}`;
             paragraph.textContent = content;
 
             daySummery.append(title);
