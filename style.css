@@ -15,7 +15,7 @@ header {
 
 .corner-images {
     position: absolute;
-    width: 100px;
+    width: auto;
     height: 100px;
     border-radius: 10px;
 }
@@ -45,13 +45,20 @@ nav {
 .container h1 {
     color: #000000;
 }
+
 .container p {
     color: #000000;
     font-size: x-large;
     font-style: oblique;
-    line-height: 1.6;
+    line-height: 2;
     font-weight: bold;
     direction: rtl;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-section {
@@ -71,6 +78,7 @@ nav {
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+    opacity: 0.95;
 }
 .nav-item img {
     width: 150px;
