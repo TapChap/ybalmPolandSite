@@ -6,8 +6,8 @@ body {
 }
 
 header {
-    background: rgb(0,0,0);
-    background: linear-gradient(120deg, rgb(255, 255, 255) 10%, rgba(0,13,244,1) 50%, rgba(255,255,255,1) 90%);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(120deg, rgb(255, 255, 255) 10%, rgba(0, 13, 244, 1) 50%, rgba(255, 255, 255, 1) 90%);
     color: white;
     padding: 20px;
     text-align: center;
@@ -67,6 +67,7 @@ nav {
     align-items: center;
     margin-top: 2rem;
 }
+
 .nav-item {
     background-color: #f0f8ff;
     border: 1px solid #ddd;
@@ -80,22 +81,29 @@ nav {
     justify-content: flex-end;
     opacity: 0.95;
 }
+
 .nav-item img {
     width: 150px;
     height: 150px;
     margin-left: 2rem;
     border-radius: 10px;
 }
+
 .nav-item div {
     text-align: right;
 }
+
 .nav-item h2 {
     color: #000000;
 }
+
 .nav-item p {
     color: #000000;
     margin: 1rem 0;
+    direction: rtl;
+    text-align: right;
 }
+
 .nav-item a {
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -104,6 +112,7 @@ nav {
     text-decoration: none;
     border-radius: 5px;
 }
+
 .nav-item a:hover {
     background-color: #6699cc;
     transform: scale(1.1);
