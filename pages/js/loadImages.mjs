@@ -62,8 +62,11 @@ async function downloadImage(url) {
     document.body.removeChild(link)
 }
 
-loadImagesFromFirebase()
-    .then(
-        (__) => document.getElementById("loading").remove())
-    .then(
-        (__)=> document.getElementById('gallery').style.visibility = 'visible');
+setTimeout(()=> {
+    loadImagesFromFirebase()
+        .then((__) => {
+                document.getElementById("loading").remove();
+                document.getElementById('gallery').style.visibility = 'visible';
+            }
+        );
+}, 2500);
