@@ -17,8 +17,19 @@ const storage = getStorage(app);
 
 const gallery = document.getElementById('gallery');
 
+
+// get the title string
+const titleStringRef = ref(storage, 'titlesString.txt');
+const titleStringURL = await getDownloadURL(titleStringRef);
+const titleStringResponse = await fetch(titleStringURL);
+const titleString = await titleStringResponse.text();
+
+const titles = titleString.split('-');
+console.log(titles);
+
+
 async function loadImagesFromFirebase() {
-    for (let i = 10; i >= 0; i--) {
+    for (let i = 10; i > 0; i--) {
         const storageRef = ref(storage, `gallery/day${i}`);
         const listResult = await listAll(storageRef);
         const downloadPromises = listResult.items.map(itemRef => getDownloadURL(itemRef));
@@ -28,7 +39,7 @@ async function loadImagesFromFirebase() {
 
             const hr = document.createElement("hr");
             const dayNum = document.createElement("h2");
-            dayNum.textContent = `${i} יום`;
+            dayNum.textContent = titles[i - 1];
             gallery.appendChild(hr);
             gallery.appendChild(dayNum);
 
