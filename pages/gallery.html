@@ -36,14 +36,18 @@
 <script type="module">
     import {renderLoadingText, deleteText} from '../pages/js/loadingTextEffect.mjs';
     import '../pages/js/loadImages.mjs';
+    import { mobileCheck } from '/mobileCheck.mjs';
 
-    renderLoadingText('להורדת התמונה לחצו קליק שמאלי', 'instruction')
+    renderLoadingText('לחצו על תמונה על מנת להוריד אותה אל מכשריכם', 'instruction')
 
-    setTimeout(() => deleteText('instruction'), 5_000);
+    setTimeout(() => deleteText('instruction'), 5500);
 
-    setTimeout(() => renderLoadingText('"לפתיחה במסך מלא לחצו קליק ימני ולאחריו "פתיחת תמונה במסך מלא', 'instruction'), 7_000);
+    if (!mobileCheck()){
 
-    setTimeout(() => deleteText('instruction'), 15_000);
+        setTimeout(() => renderLoadingText('לפתיחה במסך מלא לחצו קליק ימני ולאחריו "פתיחת תמונה במסך מלא', 'instruction'), 7_000);
+
+        setTimeout(() => deleteText('instruction'), 15_000);
+    }
 </script>
 </body>
 </html>

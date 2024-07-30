@@ -45,7 +45,6 @@ export function deleteText(id){
 
     setTimeout(() => {
         clearInterval(intervalID)
-        console.log('ended');
     }, 1500);
 }
 
