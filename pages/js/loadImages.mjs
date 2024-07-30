@@ -19,7 +19,7 @@ const gallery = document.getElementById('gallery');
 
 async function loadImagesFromFirebase() {
     for (let i = 10; i >= 0; i--) {
-        const storageRef = ref(storage, `day${i}`);
+        const storageRef = ref(storage, `gallery/day${i}`);
         const listResult = await listAll(storageRef);
         const downloadPromises = listResult.items.map(itemRef => getDownloadURL(itemRef));
         const urls = await Promise.all(downloadPromises);
