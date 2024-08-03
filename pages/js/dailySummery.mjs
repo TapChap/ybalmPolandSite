@@ -16,10 +16,9 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 const summeries = document.getElementById('summeries');
+const folder = await listAll(ref(storage, 'dailySummary'));
 
 async function loadSummeries() {
-    const folder = await listAll(ref(storage, 'dailySummary'));
-
     for (let i = folder.items.length - 1; i >= 0; i--) {
         try {
             const url = await getDownloadURL(folder.items[i]);
@@ -32,7 +31,7 @@ async function loadSummeries() {
             const title = document.createElement("h2");
             const paragraph = document.createElement("p");
 
-            title.textContent = folder.items[i].name.substring(0, folder.items[i].name.length - 4);
+            title.textContent = folder.items[i].name.substring(1, folder.items[i].name.length - 4);
             paragraph.textContent = content;
 
             daySummery.append(title);
@@ -52,12 +51,21 @@ function fadeSummeries() {
     for (let i = summeries.length - 1; i >= 0; i--) {
         let summery = summeries.item(i);
         for (let j = 0; j <= 100; j++) {
-            setTimeout(() => {
-                summery.style.opacity = j + '%'
-                console.log(summery.style.opacity.toString());
-            }, (10 * j) + (6 * 100 * i));
+            setTimeout(() => summery.style.opacity = j + '%', (10 * j) + (6 * 100 * i));
         }
     }
 }
 
+function sortByLeadingDigit(arr) {
+    return arr.sort((a, b) => {
+      // Extract the first character and convert it to a number
+      const digitA = parseInt(a[0], 10);
+      const digitB = parseInt(b[0], 10);
+  
+      // Compare the two numbers
+      return digitA - digitB;
+    });
+  }
+
+sortByLeadingDigit(folder.items);
 loadSummeries().then(fadeSummeries);
