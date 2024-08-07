@@ -1,5 +1,5 @@
-import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import {getStorage, ref, listAll, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBtFxfJfWYzTkjCMrhySoPofAS5zAbmqKM",
@@ -46,7 +46,8 @@ async function loadImagesFromFirebase() {
                 const hr = document.createElement("hr");
                 const dayNum = document.createElement("h2");
                 dayNum.textContent = titles[i - 1];
-                gallery.appendChild(hr);
+                // dayNum.className = "center";
+                // gallery.appendChild(hr);
                 gallery.appendChild(dayNum);
 
                 const dayBox = document.createElement("div");
@@ -97,11 +98,8 @@ async function downloadImage(url) {
     }
 }
 
-setTimeout(()=> {
-    loadImagesFromFirebase()
-        .then((__) => {
-                document.getElementById("loading").remove();
-                document.getElementById('gallery').style.visibility = 'visible';
-            }
-        );
-}, 2500);
+loadImagesFromFirebase()
+    .then((__) => {
+        document.getElementById("loading").remove();
+        document.getElementById('gallery').style.visibility = 'visible';
+    });
