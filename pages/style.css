@@ -80,7 +80,6 @@ nav a:hover {
 
 .gallery img:hover {
     transform: scale(1.15);
-    /* transform: scale(1.5); */
     z-index: 100;
 }
 

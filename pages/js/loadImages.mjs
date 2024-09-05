@@ -2,38 +2,25 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase
 import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBtFxfJfWYzTkjCMrhySoPofAS5zAbmqKM",
-    authDomain: "ybalmpolandsite.firebaseapp.com",
-    projectId: "ybalmpolandsite",
-    storageBucket: "ybalmpolandsite.appspot.com",
-    messagingSenderId: "581656278199",
-    appId: "1:581656278199:web:d43566dcc3a87093c50932",
-    measurementId: "G-Z8HQTJMV7V"
-};
-
+    apiKey: "AIzaSyD7QpVIw1k-VpaWolML1lDhuzB0umX4kgU",
+    authDomain: "poland-bb03d.firebaseapp.com",
+    projectId: "poland-bb03d",
+    storageBucket: "poland-bb03d.appspot.com",
+    messagingSenderId: "294060305061",
+    appId: "1:294060305061:web:66f9299fc4516c5a797b4c",
+    measurementId: "G-2KXMGB5WQQ"
+  };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 const gallery = document.getElementById('gallery');
 
+let zoomedImage = document.createElement('img');
+
 async function loadImagesFromFirebase() {
     // Load all titles first
     const titles = await getTitles(); // Assuming getTitles fetches the titles from the titlesString.txt
-
-    // Create an IntersectionObserver for lazy loading
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                observer.unobserve(img);
-            }
-        });
-    }, {
-        rootMargin: '0px 0px 50px 0px',
-        threshold: 0.1
-    });
 
     for (let i = 10; i > 0; i--) {
         const storageRef = ref(storage, `gallery/day${i}`);
@@ -55,11 +42,12 @@ async function loadImagesFromFirebase() {
 
                 urls.forEach(url => {
                     const img = document.createElement('img');
-                    img.dataset.src = url; // Use data-src for lazy loading
-                    img.onclick = ev => {
-                        if (ev.button === 0) downloadImage(url);
+                    img.src = url; // Use data-src for lazy loading
+                    img.onclick = event => {
+                        zoomedImage.style = 'transform: scale(1);';
+                        if (event.button === 0) img.style = 'transform: scale(2);'
+                        zoomedImage = img;
                     }
-                    observer.observe(img); // Observe the image
                     dayBox.appendChild(img);
                 });
 
@@ -70,6 +58,10 @@ async function loadImagesFromFirebase() {
         }
     }
 }
+
+window.onscroll = function (e) {  
+    zoomedImage.style = 'transform: scale(1);';
+    } 
 
 // Function to get titles from the server
 async function getTitles() {
