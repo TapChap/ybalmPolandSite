@@ -66,7 +66,6 @@ window.onscroll = function (e) {
 // Function to get titles from the server
 async function getTitles() {
     return [
-        "יום אפס למסע",
         "יום ראשון למסע",
         "יום שני למסע",
         "יום שלישי למסע",
@@ -75,7 +74,8 @@ async function getTitles() {
         "יום שישי למסע",
         "יום שביעי למסע",
         "יום שמיני למסע",
-        "יום תשיעי למסע"
+        "יום תשיעי למסע",
+        "יום עשירי למסע"
       ];
 }
 
