@@ -65,11 +65,13 @@ window.onscroll = function (e) {
 
 // Function to get titles from the server
 async function getTitles() {
-    const titleStringRef = ref(storage, 'titlesString.txt');
-    const titleStringURL = await getDownloadURL(titleStringRef);
-    const titleStringResponse = await fetch(titleStringURL);
-    const titleString = await titleStringResponse.text();
-    return titleString.split('-');
+    // const titleStringRef = ref(storage, 'titlesString.txt');
+    // const titleStringURL = await getDownloadURL(titleStringRef);
+    // const titleStringResponse = await fetch(titleStringURL);
+    // const titleString = await titleStringResponse.text();
+    // return titleString.split('-');
+
+    return ["day 1", "day 2", "day 3", "day 4"];
 }
 
 // Function to download an image
