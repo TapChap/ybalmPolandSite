@@ -65,13 +65,18 @@ window.onscroll = function (e) {
 
 // Function to get titles from the server
 async function getTitles() {
-    // const titleStringRef = ref(storage, 'titlesString.txt');
-    // const titleStringURL = await getDownloadURL(titleStringRef);
-    // const titleStringResponse = await fetch(titleStringURL);
-    // const titleString = await titleStringResponse.text();
-    // return titleString.split('-');
-
-    return ["day 1", "day 2", "day 3", "day 4"];
+    return [
+        "יום אפס למסע",
+        "יום ראשון למסע",
+        "יום שני למסע",
+        "יום שלישי למסע",
+        "יום רביעי למסע",
+        "יום חמישי למסע",
+        "יום שישי למסע",
+        "יום שביעי למסע",
+        "יום שמיני למסע",
+        "יום תשיעי למסע"
+      ];
 }
 
 // Function to download an image
