@@ -1,15 +1,27 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
+// itay keller
+// const firebaseConfig = {
+//     apiKey: "AIzaSyD7QpVIw1k-VpaWolML1lDhuzB0umX4kgU",
+//     authDomain: "poland-bb03d.firebaseapp.com",
+//     projectId: "poland-bb03d",
+//     storageBucket: "poland-bb03d.appspot.com",
+//     messagingSenderId: "294060305061",
+//     appId: "1:294060305061:web:66f9299fc4516c5a797b4c",
+//     measurementId: "G-2KXMGB5WQQ"
+//   };
+
 const firebaseConfig = {
-    apiKey: "AIzaSyD7QpVIw1k-VpaWolML1lDhuzB0umX4kgU",
-    authDomain: "poland-bb03d.firebaseapp.com",
-    projectId: "poland-bb03d",
-    storageBucket: "poland-bb03d.appspot.com",
-    messagingSenderId: "294060305061",
-    appId: "1:294060305061:web:66f9299fc4516c5a797b4c",
-    measurementId: "G-2KXMGB5WQQ"
+    apiKey: "AIzaSyBtFxfJfWYzTkjCMrhySoPofAS5zAbmqKM",
+    authDomain: "ybalmpolandsite.firebaseapp.com",
+    projectId: "ybalmpolandsite",
+    storageBucket: "ybalmpolandsite.appspot.com",
+    messagingSenderId: "581656278199",
+    appId: "1:581656278199:web:d43566dcc3a87093c50932",
+    measurementId: "G-Z8HQTJMV7V"
   };
+  
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
